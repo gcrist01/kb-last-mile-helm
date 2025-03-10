@@ -1,0 +1,6 @@
+dependencies:
+- name: cip-common
+  repository: file://../cip-common
+  version: 1.0.0
+digest: sha256:a97e28ce6476a497b6509d21f588e9782f73b4ac8e020d0b8aa4b444610c80a3
+generated: "2025-03-10T09:56:08.072775031+13:00"

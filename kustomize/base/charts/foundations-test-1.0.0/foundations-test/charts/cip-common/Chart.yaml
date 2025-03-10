@@ -1,0 +1,5 @@
+apiVersion: v2
+description: A common library for Service Foundation
+name: cip-common
+type: library
+version: 1.0.0

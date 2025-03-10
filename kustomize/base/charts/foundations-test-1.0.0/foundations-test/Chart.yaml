@@ -1,0 +1,11 @@
+apiVersion: v2
+dependencies:
+- name: cip-common
+  repository: file://../cip-common
+  tags:
+  - kiwibank-common
+  version: 1.x.x
+description: Run test suite as one-off process
+name: foundations-test
+type: application
+version: 1.0.0

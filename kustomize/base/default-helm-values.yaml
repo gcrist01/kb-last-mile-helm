@@ -1,0 +1,27 @@
+## Component Party API DOMAIN specific settings
+
+cip:
+  major_version: "$MAJOR_VERSION"
+  minor_version: "$MINOR_VERSION"
+  patch_version: "$PATCH_VERSION"
+  environment: $KB_PIPELINE_STAGE
+  runtime_role_arn: arn:aws:iam::${STAGE_ACCOUNT_ID}:role/${PIPELINE_NAME}_runtime
+  serviceaccount_name: $SERVICEACCOUNT_NAME
+  git_commit_hash: $GIT_COMMIT_HASH
+  teamname: $TEAM_NAME
+  snowci: $snowci
+  DR: $dr
+
+## @param global.imageRegistry Global Docker image registry
+## @param global.imagePullSecrets Global Docker registry secret names as an array
+##
+domain:
+  name: $DOMAIN_VAR
+
+  env:
+    PGPORT: "5432"
+
+imageRegistry: 041371538652.dkr.ecr.ap-southeast-2.amazonaws.com
+imagePullPolicy: Always
+imagePullSecrets:
+  - name: awsregistrycredential

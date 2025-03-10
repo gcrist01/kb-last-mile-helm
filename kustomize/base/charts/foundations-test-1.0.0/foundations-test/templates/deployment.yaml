@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-api
+spec:
+  selector:
+    matchLabels:
+      app: helloworld-api
+  template:
+    metadata:
+      labels:
+        app: helloworld-api
+    spec:
+      containers:
+      - name: helloworld-api
+        image: "${STAGE_ECR_HOST_NAME}/tipu/helloworld/api:${KB_PULL_REQUEST_NUMBER}"
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "1Gi"
+          requests:
+            memory: "256Mi"
+            cpu: "0.3"
+        securityContext:
+          seccompProfile:
+            type: 'RuntimeDefault'
+          allowPrivilegeEscalation: false
+          privileged: false
+          capabilities:
+            drop:
+              - "ALL"
+          # might break apps that are doing weird stuff
+          # use a emptyDir volume instead!
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true            
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: ${KB_STAGE_NAME}
